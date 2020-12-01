@@ -16,11 +16,30 @@ class NodeVar // zmienna obslugujaca liste dwukierunkowa
 
     NodeVar();
 
-    NodeVar(Node* head_, Node* tail_);
-
     ~NodeVar();
 
-    void push_front(int new_data);
+    void push_beginning(int new_data);
+
+    void push_end (int new_data);
+
+    /* Given a node as prev_node, insert a new node after the given node */
+    void insert_after(Node* prev_node, int new_data);
+
+    void insert_before(Node* next_node, int new_data);
+
+    // usuwanie wybranego elementu listy
+
+    void n_remove (Node* Node_to_remove);
+
+    //Usuwanie elementu z pocz¹tku listy
+
+    void n_pop_front();
+
+    void n_pop_back();
+
+    void reverseList();
+
+    int linear_search(int value);
 
     void display();
     //private:

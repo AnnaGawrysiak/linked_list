@@ -1,5 +1,5 @@
-#include <iostream>
 # pragma once
+#include <iostream>
 
 using namespace std;
 
@@ -8,8 +8,8 @@ class Node // element listy dwukierunkowej
 {
     public:
         int data;
-        struct Node* next;
-        struct Node* prev;
+        Node* next;
+        Node* prev;
         Node();
         virtual ~Node();
 
