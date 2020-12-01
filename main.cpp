@@ -31,6 +31,15 @@ int main()
 
     myNodeVar.reverseList();
 
+    int searched_value = 12;
+
+    if (myNodeVar.linear_search(searched_value) != nullptr)
+
+        cout << "Wartosc " << searched_value << " zostala znaleziona na pozycji: " << myNodeVar.linear_search(searched_value) << endl;
+    else
+        cout << "Szukana wartosc nie zostala znaleziona. " << endl;
+
+
     myNodeVar.display();
 
     return 0;

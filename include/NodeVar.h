@@ -39,7 +39,7 @@ class NodeVar // zmienna obslugujaca liste dwukierunkowa
 
     void reverseList();
 
-    int linear_search(int value);
+    Node* linear_search(int value);
 
     void display();
     //private:

@@ -169,14 +169,14 @@ Node* NodeVar::linear_search(int value)
     if (head == nullptr)
         return nullptr;
 
-    Node * temp = head;// ustaw wskaznik na pierwszy element listy
+    Node *temp = head;// ustaw wskaznik na pierwszy element listy
 
-    while(temp != tail && (*temp)->data != value )
+    while(temp != tail && temp->data != value )
         {
             temp = temp->next;
         }
 
-  if ((*temp)->data == value)
+  if (temp->data == value)
     return temp;
   else
     return nullptr;
