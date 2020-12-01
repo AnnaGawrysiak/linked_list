@@ -39,6 +39,9 @@ int main()
     else
         cout << "Szukana wartosc nie zostala znaleziona. " << endl;
 
+    //myNodeVar.bubble_sort();
+
+    //cout << "Minimum value is: " << myNodeVar.find_min() << endl;
 
     myNodeVar.display();
 

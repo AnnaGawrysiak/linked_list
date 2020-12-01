@@ -41,6 +41,10 @@ class NodeVar // zmienna obslugujaca liste dwukierunkowa
 
     Node* linear_search(int value);
 
+    //void bubble_sort();
+
+    int find_min();
+
     void display();
     //private:
 };

@@ -183,6 +183,54 @@ Node* NodeVar::linear_search(int value)
    //zwracana wartosc: adres elementu listy, który zawiera v  lub adres zerowy, jeśli lista takiego elementu nie posiada
 }
 
+/*void NodeVar::bubble_sort()
+{
+    if (head == nullptr)
+        return;
+
+    Node *temp = head;
+
+    do
+    {
+           if (temp->data > temp->next->data)
+            {
+                //swap(temp->data, temp->next->data);
+                int tempNum = temp->data;
+                temp->data = temp->next->data;
+                temp->next->data = tempNum;
+            }
+
+        temp = temp->next;
+
+    } while (temp->next!=tail);
+}
+*/
+
+int NodeVar::find_min()
+{
+    Node* ptr = head;
+
+    int found_min = head->data;
+
+    do
+    {
+      if (ptr->data > ptr->next->data)
+      {
+          found_min = ptr->data;
+      }
+
+       ptr = ptr->next;
+
+       if(ptr->next == tail)
+           return found_min;
+
+
+    } while (ptr!=tail);
+
+    return 0;
+
+}
+
 void NodeVar::display()
 {
    Node* ptr = head;
