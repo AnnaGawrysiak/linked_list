@@ -13,6 +13,18 @@ NodeVar::~NodeVar()
     //dtor
 }
 
+Node* NodeVar::operator [](int index)
+{
+    Node* temp = head;
+
+    for (int i = 0; i < index; i++)
+    {
+        temp = temp->next;
+    }
+
+    return temp;
+}
+
 //insert a new node at the beginning of the list
 void NodeVar::push_beginning(int new_data)
 {
@@ -68,10 +80,11 @@ void NodeVar::insert_before(Node* next_node, int new_data)
 
    newNode->next = next_node;
 
-   newNode->prev = next_node->prev;
-
-   if (newNode->prev != NULL)
-   newNode->prev->next = newNode;
+   if (newNode->prev != nullptr)
+   {
+       newNode->prev = next_node->prev->prev;
+       newNode->prev->next = newNode;
+   }
    else head = newNode;
 
    count++;
@@ -107,12 +120,14 @@ void NodeVar::n_remove (Node* Node_to_remove)
     //Jeœli istnieje poprzednik usuwanego elementu, to w jego polu next
     //umieszczamy zawartoœæ pola next usuwanego elementu, czyli adres nastêpnika.
     //W przeciwnym razie wybrany element jest pierwszym elementem listy. W takim przypadku w head  umieszczamy zawartoœæ pola next
-    //usuwanego elementu, czyli adres nastêpnika. Zwróæ uwagê, ¿e w przypadku listy jednoelementowej do pola head  trafi adres zerowy.
+    //usuwanego elementu, czyli adres nastêpnika. W przypadku listy jednoelementowej do pola head  trafi adres zerowy.
 
     if (Node_to_remove->prev != nullptr)
         Node_to_remove->prev->next = Node_to_remove->next;
     else
+    {
         head = Node_to_remove->next;
+    }
 
     if (Node_to_remove->next != nullptr)
         Node_to_remove->next->prev = Node_to_remove->prev;
@@ -121,6 +136,11 @@ void NodeVar::n_remove (Node* Node_to_remove)
 
          delete Node_to_remove;
 
+}
+
+void NodeVar::remove_from_position (NodeVar myNodeVar_, int position)
+{
+     myNodeVar_.n_remove(myNodeVar_[position]);
 }
 
 void NodeVar::n_pop_front()
@@ -135,11 +155,25 @@ void NodeVar::n_pop_front()
 
 void NodeVar::n_pop_back()
 {
-    if (count != 0)
+    if (head == nullptr)
+        return;
+
+    else if (head->next == nullptr)
     {
-        tail->prev->next = nullptr;
+        delete head;
+        count--;
+
+        return;
+    }
+
+    else
+    {
         tail = tail->prev;
+        tail->next = nullptr;
+
         delete tail->next;
+        count--;
+        return;
     }
 }
 
@@ -183,7 +217,7 @@ Node* NodeVar::linear_search(int value)
    //zwracana wartosc: adres elementu listy, który zawiera v  lub adres zerowy, jeśli lista takiego elementu nie posiada
 }
 
-/*void NodeVar::bubble_sort()
+void NodeVar::bubble_sort()
 {
     if (head == nullptr)
         return;
@@ -204,7 +238,7 @@ Node* NodeVar::linear_search(int value)
 
     } while (temp->next!=tail);
 }
-*/
+
 
 int NodeVar::find_min()
 {
@@ -231,12 +265,95 @@ int NodeVar::find_min()
 
 }
 
+void NodeVar::insert_at(int position, int value)
+{
+    if (count == 0)
+        return;
+
+    //allocate memory for new node
+    Node* newNode = new Node;
+
+    //assign data to new node
+    newNode->data = value;
+
+    Node* temp = head;
+
+    for (int i = 0; i < position; i++)
+    {
+        temp = temp->next;
+    }
+
+    if (temp->prev != nullptr)
+    {
+       newNode->prev = temp->prev;
+       newNode->prev->next = newNode;
+    }
+    else head = newNode;
+
+   temp->prev = newNode;
+
+   newNode->next = temp;
+
+   count++;
+
+    //newNode->next = temp;
+    //temp->prev = newNode;
+
+    //if (newNode->prev != nullptr)
+    //{
+      //  newNode->prev = temp->prev;
+       // newNode->prev->next = newNode;
+    //}
+
+    //else
+      //  head = newNode;
+
+}
+
+void NodeVar::swap_values(int val1, int val2)
+{
+     if (val1== val2) return;
+
+    //Node* node1     = myNodeVar_.linear_search(val1);
+    //Node* node2     = myNodeVar_.linear_search(val2);
+
+    Node* temp = head;
+
+    do
+    {
+        if (temp->data == val1)
+            temp->data = val2;
+
+        else if (temp->data == val2)
+            temp->data = val1;
+
+         temp = temp->next;
+    } while(temp->next!=nullptr);
+
+}
+
+//dopisanie do tej listy metody swap(), która zamieni miejscami dwa nody o danych indeksach.
+
 void NodeVar::display()
 {
+    if (head == nullptr)
+    {
+        cout << "List empty, nothing to display" << endl;
+        return;
+    }
+
    Node* ptr = head;
-   while(ptr != nullptr)
+
+   cout << "Elements of the list: ";
+
+   while (ptr != nullptr)
     {
       cout<< ptr->data <<" ";
-      ptr = ptr->next;
-    }
+      if (ptr->next != nullptr)
+      {
+          ptr = ptr->next;
+      }
+      else
+          return;
+    };
 }

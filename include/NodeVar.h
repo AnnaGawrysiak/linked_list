@@ -18,6 +18,8 @@ class NodeVar // zmienna obslugujaca liste dwukierunkowa
 
     ~NodeVar();
 
+    Node* operator [](int index);
+
     void push_beginning(int new_data);
 
     void push_end (int new_data);
@@ -31,6 +33,8 @@ class NodeVar // zmienna obslugujaca liste dwukierunkowa
 
     void n_remove (Node* Node_to_remove);
 
+    void remove_from_position(NodeVar myNodeVar_, int position);
+
     //Usuwanie elementu z pocz¹tku listy
 
     void n_pop_front();
@@ -41,9 +45,13 @@ class NodeVar // zmienna obslugujaca liste dwukierunkowa
 
     Node* linear_search(int value);
 
-    //void bubble_sort();
+    void bubble_sort();
 
     int find_min();
+
+    void insert_at(int position, int value);
+
+    void swap_values(int val1, int val2);
 
     void display();
     //private:

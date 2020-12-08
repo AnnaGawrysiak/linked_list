@@ -1,8 +1,9 @@
 #include <iostream>
 #include "NodeVar.h"
-#include "Node.h"
 
 using namespace std;
+
+int operator +(const NodeVar &lhs, const NodeVar &rhs);
 
 int main()
 {
@@ -15,29 +16,30 @@ int main()
 
    myNodeVar.push_end(40);
 
-    myNodeVar.insert_after(myNodeVar.head, 11);
+    myNodeVar.insert_at(3, 12);
 
-    myNodeVar.insert_after(myNodeVar.head->next->next, 12);
+    myNodeVar.swap_values(22,20);
 
-    myNodeVar.insert_before(myNodeVar.tail->prev, 13);
+    myNodeVar.display();
 
-    myNodeVar.n_remove(myNodeVar.tail);
+    myNodeVar.remove_from_position(myNodeVar, 0); // test if position is 0
+
+    myNodeVar.display();
 
     myNodeVar.n_pop_front();
 
     myNodeVar.n_pop_back();
 
-    //11 22 12 20
 
-    myNodeVar.reverseList();
+    //myNodeVar.reverseList();
 
     int searched_value = 12;
 
     if (myNodeVar.linear_search(searched_value) != nullptr)
 
-        cout << "Wartosc " << searched_value << " zostala znaleziona na pozycji: " << myNodeVar.linear_search(searched_value) << endl;
+        cout << "Value " << searched_value << " has been found at position: " << myNodeVar.linear_search(searched_value) << endl;
     else
-        cout << "Szukana wartosc nie zostala znaleziona. " << endl;
+        cout << "Searched value has not been found. " << endl;
 
     //myNodeVar.bubble_sort();
 
@@ -47,3 +49,9 @@ int main()
 
     return 0;
 }
+
+int operator +(const Node &lhs, const Node &rhs)
+{
+    return (lhs.data + rhs.data);
+}
+

@@ -11,7 +11,9 @@ class Node // element listy dwukierunkowej
         Node* next;
         Node* prev;
         Node();
+        Node (const Node& a);
         virtual ~Node();
+        Node* operator=(const Node& r);
 
     //private:
 };
