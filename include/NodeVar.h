@@ -53,6 +53,8 @@ class NodeVar // zmienna obslugujaca liste dwukierunkowa
 
     void swap_values(int val1, int val2);
 
+    void swap(NodeVar myNodeVar, int index1, int index2);
+
     void display();
     //private:
 };

@@ -19,15 +19,22 @@ Node::~Node()
     //dtor
 }
 
-Node* Node::operator=(const Node& rhs)
+Node& Node::operator=(const Node &rhs)
 {
-    if (&rhs==this)
-		return this;
+    if (&rhs!=this)
+    {
+     if (next)
+        delete next;
+
+	 if(prev)
+	 delete prev;
 
    data = rhs.data;
    next = rhs.next;
    prev = rhs.prev;
-   //this->other_data = n.other_data;
 
-    return this;
+    }
+
+   return *this;
+   //this->other_data = n.other_data;
 }

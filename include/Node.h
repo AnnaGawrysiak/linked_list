@@ -13,7 +13,7 @@ class Node // element listy dwukierunkowej
         Node();
         Node (const Node& a);
         virtual ~Node();
-        Node* operator=(const Node& r);
+        Node& operator=(const Node& r);
 
     //private:
 };

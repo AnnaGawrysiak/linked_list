@@ -3,7 +3,7 @@
 
 using namespace std;
 
-int operator +(const NodeVar &lhs, const NodeVar &rhs);
+int operator +(const Node &lhs, const Node &rhs);
 
 int main()
 {
@@ -24,14 +24,15 @@ int main()
 
     myNodeVar.remove_from_position(myNodeVar, 0); // test if position is 0
 
+    myNodeVar.swap(myNodeVar, 1, 2);
+
     myNodeVar.display();
 
     myNodeVar.n_pop_front();
 
     myNodeVar.n_pop_back();
 
-
-    //myNodeVar.reverseList();
+    myNodeVar.reverseList();
 
     int searched_value = 12;
 
@@ -41,9 +42,9 @@ int main()
     else
         cout << "Searched value has not been found. " << endl;
 
-    //myNodeVar.bubble_sort();
+    myNodeVar.bubble_sort();
 
-    //cout << "Minimum value is: " << myNodeVar.find_min() << endl;
+    cout << "Minimum value is: " << myNodeVar.find_min() << endl;
 
     myNodeVar.display();
 

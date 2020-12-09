@@ -179,24 +179,26 @@ void NodeVar::n_pop_back()
 
 void NodeVar::reverseList()
 {
-    if (head != nullptr)
-    {
-        Node *p = nullptr;
+        // Initialize current, previous and
+        // next pointers
+        Node *current = head;
+        Node *prev = nullptr;
+        Node *next = nullptr;
 
-        Node* pc = head;
+        while (current != nullptr)
+        {
+            // Store next
+            next = current->next;
 
-            while (pc -> next)
-            {
-                p = pc->next;
-                pc->next = p->next;
-                p->next = head;
-                p->next->prev = pc;
-                pc->prev = p;
-                head = p;
+            // Reverse current node's pointer
+            current->next = prev;
+
+            // Move pointers one position ahead.
+            prev = current;
+            current = next;
         }
+        head = prev;
     }
-
-}
 
 Node* NodeVar::linear_search(int value)
 {
@@ -244,13 +246,15 @@ int NodeVar::find_min()
 {
     Node* ptr = head;
 
-    int found_min = head->data;
+    int found_min = ptr->data;
+
+    cout << "head" << ptr->data << endl;
 
     do
     {
       if (ptr->data > ptr->next->data)
       {
-          found_min = ptr->data;
+          found_min = ptr->next->data;
       }
 
        ptr = ptr->next;
@@ -258,10 +262,11 @@ int NodeVar::find_min()
        if(ptr->next == tail)
            return found_min;
 
+           cout << "found_min" << found_min << endl;
 
     } while (ptr!=tail);
 
-    return 0;
+    return found_min;
 
 }
 
@@ -333,6 +338,15 @@ void NodeVar::swap_values(int val1, int val2)
 }
 
 //dopisanie do tej listy metody swap(), która zamieni miejscami dwa nody o danych indeksach.
+
+void NodeVar::swap(NodeVar myNodeVar, int index1, int index2)
+{
+    int temp = 0;
+
+    temp = myNodeVar[index1]->data;
+    myNodeVar[index1]->data = myNodeVar[index2]->data;
+    myNodeVar[index2]->data = temp;
+}
 
 void NodeVar::display()
 {
