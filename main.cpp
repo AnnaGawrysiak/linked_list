@@ -5,14 +5,31 @@ using namespace std;
 
 int operator +(const Node &lhs, const Node &rhs);
 
+bool test1();
+
 int main()
 {
 
-   NodeVar myNodeVar;
+   List myNodeVar;
 
    myNodeVar.push_beginning(20);
    myNodeVar.push_beginning(22);
    myNodeVar.push_beginning(23);
+
+   //myNodeVar.display();
+
+   //cout << myNodeVar[2] << endl;
+
+   if (test1())
+    cout << "Test 1" << (test1() ? "Sukces! " : "nie udalo sie") << endl;
+
+
+
+   //myNodeVar.swap_(myNodeVar, 1, 2);
+
+   //myNodeVar.display();
+
+   /*
 
    myNodeVar.push_end(40);
 
@@ -24,7 +41,13 @@ int main()
 
     myNodeVar.remove_from_position(myNodeVar, 0); // test if position is 0
 
-    myNodeVar.swap(myNodeVar, 1, 2);
+    myNodeVar.swap_value(myNodeVar, 1, 2);
+
+    myNodeVar.display();
+
+    cout << "Swapped values: " << endl;
+
+    //myNodeVar.swap_(myNodeVar, 1, 2);
 
     myNodeVar.display();
 
@@ -47,6 +70,7 @@ int main()
     cout << "Minimum value is: " << myNodeVar.find_min() << endl;
 
     myNodeVar.display();
+    */
 
     return 0;
 }
@@ -54,5 +78,18 @@ int main()
 int operator +(const Node &lhs, const Node &rhs)
 {
     return (lhs.data + rhs.data);
+}
+
+bool test1()
+{
+    List obiekttestowy;
+
+    obiekttestowy.push_beginning(3);
+
+    if (obiekttestowy[0]==3)
+       return true;
+
+    return false;
+
 }
 

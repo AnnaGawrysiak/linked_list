@@ -3,7 +3,7 @@
 
 using namespace std;
 
-class NodeVar // zmienna obslugujaca liste dwukierunkowa
+class List // zmienna obslugujaca liste dwukierunkowa
 {
     public:
        Node* head; // wskazuje na 1. element listy
@@ -14,11 +14,11 @@ class NodeVar // zmienna obslugujaca liste dwukierunkowa
 // Besides memory addresses, there is one additional value that a pointer can hold: a null value.
 //  A null value is a special value that means the pointer is not pointing at anything. A pointer holding a null value is called a null pointer.
 
-    NodeVar();
+    List();
 
-    ~NodeVar();
+    ~List();
 
-    Node* operator [](int index);
+    int operator [](int index);
 
     void push_beginning(int new_data);
 
@@ -33,7 +33,7 @@ class NodeVar // zmienna obslugujaca liste dwukierunkowa
 
     void n_remove (Node* Node_to_remove);
 
-    void remove_from_position(NodeVar myNodeVar_, int position);
+    void remove_from_position(List myNodeVar_, int position);
 
     //Usuwanie elementu z pocz¹tku listy
 
@@ -53,7 +53,9 @@ class NodeVar // zmienna obslugujaca liste dwukierunkowa
 
     void swap_values(int val1, int val2);
 
-    void swap(NodeVar myNodeVar, int index1, int index2);
+    void swap_value(List myNodeVar, int index1, int index2);
+
+    void swap_(List myNodeVar, int index1, int index2);
 
     void display();
     //private:

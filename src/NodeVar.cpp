@@ -1,19 +1,19 @@
 #include "NodeVar.h"
 #include "Node.h"
 
-NodeVar::NodeVar()
+List::List()
 {
     head = nullptr;
     tail = nullptr;
     count = 0;
 }
 
-NodeVar::~NodeVar()
+List::~List()
 {
     //dtor
 }
 
-Node* NodeVar::operator [](int index)
+int List::operator [](int index)
 {
     Node* temp = head;
 
@@ -22,11 +22,11 @@ Node* NodeVar::operator [](int index)
         temp = temp->next;
     }
 
-    return temp;
+    return temp->data;
 }
 
 //insert a new node at the beginning of the list
-void NodeVar::push_beginning(int new_data)
+void List::push_beginning(int new_data)
 {
    //allocate memory for node
    Node* newNode = new Node;
@@ -48,7 +48,7 @@ void NodeVar::push_beginning(int new_data)
    count++;
 } // co powinna zwracac taka funkcja? iterator wskazujacy na
 
-void NodeVar::push_end(int new_data)
+void List::push_end(int new_data)
 {
    //allocate memory for node
    Node* newNode = new Node;
@@ -68,7 +68,7 @@ void NodeVar::push_end(int new_data)
 
 }
 
-void NodeVar::insert_before(Node* next_node, int new_data)
+void List::insert_before(Node* next_node, int new_data)
 {
     //allocate memory for new node
    Node* newNode = new Node;
@@ -90,7 +90,7 @@ void NodeVar::insert_before(Node* next_node, int new_data)
    count++;
 }
 
-void NodeVar::insert_after(Node* prev_node, int new_data)
+void List::insert_after(Node* prev_node, int new_data)
 {
     //allocate memory for new node
    Node* newNode = new Node;
@@ -113,7 +113,7 @@ void NodeVar::insert_after(Node* prev_node, int new_data)
     count++;
 }
 
-void NodeVar::n_remove (Node* Node_to_remove)
+void List::n_remove (Node* Node_to_remove)
 {
     count--;
 
@@ -138,12 +138,12 @@ void NodeVar::n_remove (Node* Node_to_remove)
 
 }
 
-void NodeVar::remove_from_position (NodeVar myNodeVar_, int position)
-{
-     myNodeVar_.n_remove(myNodeVar_[position]);
-}
+//void List::remove_from_position (List myNodeVar_, int position)
+//{
+ //    myNodeVar_.n_remove(myNodeVar_[position]); // otrzebna jest metoda do pozyskiwania position
+//}
 
-void NodeVar::n_pop_front()
+void List::n_pop_front()
 {
     if (count != 0)
     {
@@ -153,7 +153,7 @@ void NodeVar::n_pop_front()
     }
 }
 
-void NodeVar::n_pop_back()
+void List::n_pop_back()
 {
     if (head == nullptr)
         return;
@@ -177,7 +177,7 @@ void NodeVar::n_pop_back()
     }
 }
 
-void NodeVar::reverseList()
+void List::reverseList()
 {
         // Initialize current, previous and
         // next pointers
@@ -200,7 +200,7 @@ void NodeVar::reverseList()
         head = prev;
     }
 
-Node* NodeVar::linear_search(int value)
+Node* List::linear_search(int value)
 {
     if (head == nullptr)
         return nullptr;
@@ -219,7 +219,7 @@ Node* NodeVar::linear_search(int value)
    //zwracana wartosc: adres elementu listy, który zawiera v  lub adres zerowy, jeśli lista takiego elementu nie posiada
 }
 
-void NodeVar::bubble_sort()
+void List::bubble_sort()
 {
     if (head == nullptr)
         return;
@@ -242,7 +242,7 @@ void NodeVar::bubble_sort()
 }
 
 
-int NodeVar::find_min()
+int List::find_min()
 {
     Node* ptr = head;
 
@@ -270,7 +270,7 @@ int NodeVar::find_min()
 
 }
 
-void NodeVar::insert_at(int position, int value)
+void List::insert_at(int position, int value)
 {
     if (count == 0)
         return;
@@ -315,7 +315,7 @@ void NodeVar::insert_at(int position, int value)
 
 }
 
-void NodeVar::swap_values(int val1, int val2)
+void List::swap_values(int val1, int val2)
 {
      if (val1== val2) return;
 
@@ -339,7 +339,7 @@ void NodeVar::swap_values(int val1, int val2)
 
 //dopisanie do tej listy metody swap(), która zamieni miejscami dwa nody o danych indeksach.
 
-void NodeVar::swap(NodeVar myNodeVar, int index1, int index2)
+/*void List::swap_value(List myNodeVar, int index1, int index2)
 {
     int temp = 0;
 
@@ -347,8 +347,52 @@ void NodeVar::swap(NodeVar myNodeVar, int index1, int index2)
     myNodeVar[index1]->data = myNodeVar[index2]->data;
     myNodeVar[index2]->data = temp;
 }
+*/
+/*void List::swap_(List myNodeVar, int index1, int index2)
+{
+    if (index1 == index2)
+        return;
 
-void NodeVar::display()
+    Node* temp1 = myNodeVar[index1]; //0
+    Node* temp2 = myNodeVar[index2];//1
+
+    myNodeVar[index1]->prev = temp2->prev;
+    cout << myNodeVar[index1]->prev -> data << endl;
+    myNodeVar[index1]->next = temp2->next;
+    cout << myNodeVar[index1]->next -> data << endl;
+    myNodeVar[index1]->data = temp2->data;
+    cout << myNodeVar[index1]-> data << endl;
+
+    myNodeVar[index2]->prev = temp1->prev;
+    myNodeVar[index2]->next = temp1->next;
+    myNodeVar[index2]->data = temp1->data;
+
+    if(index1==0)
+    {
+        head = myNodeVar[index1];
+    }
+
+    if(index2==0)
+    {
+        head = myNodeVar[index2];
+    }
+
+    if(myNodeVar[index2]->next == nullptr)
+    {
+        tail = myNodeVar[index2];
+    }
+
+     if(myNodeVar[index1]->next == nullptr)
+    {
+        tail = myNodeVar[index1];
+
+        delete temp1;
+        delete temp2;
+    }
+}
+*/
+
+void List::display()
 {
     if (head == nullptr)
     {

@@ -1,19 +1,19 @@
 # depslib dependency file v1.0
-1607524300 source:c:\users\ania\onedrive\pulpit\programowanie\programowanie_lekcje\lekcja_22\books_ratings\list\src\node.cpp
+1607537030 source:c:\users\ania\onedrive\pulpit\programowanie\programowanie_lekcje\lekcja_22\books_ratings\list\src\node.cpp
 	"NodeVar.h"
 	"Node.h"
 
 1607524300 c:\users\ania\onedrive\pulpit\programowanie\programowanie_lekcje\lekcja_22\books_ratings\list\include\node.h
 	<iostream>
 
-1607524515 c:\users\ania\onedrive\pulpit\programowanie\programowanie_lekcje\lekcja_22\books_ratings\list\include\nodevar.h
+1607536968 c:\users\ania\onedrive\pulpit\programowanie\programowanie_lekcje\lekcja_22\books_ratings\list\include\nodevar.h
 	"Node.h"
 
-1607524761 source:c:\users\ania\onedrive\pulpit\programowanie\programowanie_lekcje\lekcja_22\books_ratings\list\src\nodevar.cpp
+1607537205 source:c:\users\ania\onedrive\pulpit\programowanie\programowanie_lekcje\lekcja_22\books_ratings\list\src\nodevar.cpp
 	"NodeVar.h"
 	"Node.h"
 
-1607524515 source:c:\users\ania\onedrive\pulpit\programowanie\programowanie_lekcje\lekcja_22\books_ratings\list\main.cpp
+1607537040 source:c:\users\ania\onedrive\pulpit\programowanie\programowanie_lekcje\lekcja_22\books_ratings\list\main.cpp
 	<iostream>
 	"NodeVar.h"
 
