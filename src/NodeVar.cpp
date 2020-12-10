@@ -25,6 +25,18 @@ int List::operator [](int index)
     return temp->data;
 }
 
+Node* List::give_me_node(int index)
+{
+    Node* temp = head;
+
+    for (int i = 0; i < index; i++)
+    {
+        temp = temp->next;
+    }
+
+    return temp;
+}
+
 //insert a new node at the beginning of the list
 void List::push_beginning(int new_data)
 {
@@ -348,49 +360,78 @@ void List::swap_values(int val1, int val2)
     myNodeVar[index2]->data = temp;
 }
 */
-/*void List::swap_(List myNodeVar, int index1, int index2)
+
+void List::swap_(List myNodeVar, int index1, int index2)
 {
     if (index1 == index2)
         return;
 
-    Node* temp1 = myNodeVar[index1]; //0
-    Node* temp2 = myNodeVar[index2];//1
+    //Przypisujemy Node do tymczasowych zmiennych, żeby w trakcie przepisywania połaczeń nie korzystać z operatora []
+    //Operator [] aby znaleźć kolejny Node sprawdza pole Next - gdy przy połowie przepisywania połaczeń wywołamy gdzieś ten operator, to
+    //Next zacznie wskazywać na samych siebie lub nullptr
+    Node* A = myNodeVar.give_me_node(index1);
+    Node* B = myNodeVar.give_me_node(index2);
 
-    myNodeVar[index1]->prev = temp2->prev;
-    cout << myNodeVar[index1]->prev -> data << endl;
-    myNodeVar[index1]->next = temp2->next;
-    cout << myNodeVar[index1]->next -> data << endl;
-    myNodeVar[index1]->data = temp2->data;
-    cout << myNodeVar[index1]-> data << endl;
+    //Przepisujemy poniższe parametry do tymczasowych zmiennych, aby było czytelniej
+    Node* temp1_prev = A->prev;
+    Node* temp1_next = A->next;
+    Node* temp2_prev = B->prev;
+    Node* temp2_next = B->next;
 
-    myNodeVar[index2]->prev = temp1->prev;
-    myNodeVar[index2]->next = temp1->next;
-    myNodeVar[index2]->data = temp1->data;
+    //Zamieniamy pola Node'ów, czyli przepinamy je do nowych miejsc
+    A->prev = temp2_prev;
+    A->next = temp2_next;
 
-    if(index1==0)
+    B->prev = temp1_prev;
+    B->next = temp1_next;
+
+    //To, czego nie zrobiłyśmy na spotkaniu - oprócz tego, że przepinamy Node'y, które przychodzą na indeksach 1 oraz 2, to jeszcze musimy
+    //zadbać o ich sąsiadów, aby in Next i Prev wskazywały na nowe Nody. Jeżeli tego nie zrobimy, lista zaczyna się kręcić w kółko.
+    if (A->prev != nullptr)
+        A->prev->next = A;
+
+    if (A->next != nullptr)
+        A->next->prev = A;
+
+    if (B->prev != nullptr)
+        B->prev->next = B;
+
+    if (B->next != nullptr)
+        B->next->prev = B;
+
+    //I na koniec oczywiście zmieniamy Head w List jeżeli jest taka potrzeba
+    if(index1 == 0)
+        head = B;
+
+    if(index2 == 0)
+        head = A;
+
+    if(index1==myNodeVar.size_())
     {
-        head = myNodeVar[index1];
+        tail = A;
     }
 
-    if(index2==0)
+    if(index2==myNodeVar.size_())
     {
-        head = myNodeVar[index2];
+        tail = B;
     }
 
-    if(myNodeVar[index2]->next == nullptr)
-    {
-        tail = myNodeVar[index2];
-    }
-
-     if(myNodeVar[index1]->next == nullptr)
-    {
-        tail = myNodeVar[index1];
-
-        delete temp1;
-        delete temp2;
-    }
 }
-*/
+
+int List::size_()
+{
+    Node* temp = head;
+    int size_ = 0;
+
+    while (temp->next != nullptr)
+    {
+        temp = temp ->next;
+        size_++;
+    }
+
+return size_;
+}
+
 
 void List::display()
 {

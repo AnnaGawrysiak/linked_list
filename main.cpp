@@ -19,11 +19,7 @@ int main()
    //myNodeVar.display();
 
    //cout << myNodeVar[2] << endl;
-
-   if (test1())
-    cout << "Test 1" << (test1() ? "Sukces! " : "nie udalo sie") << endl;
-
-
+    cout << "Test 1" << (test1() ? " Sukces! " : " nie udalo sie") << endl;
 
    //myNodeVar.swap_(myNodeVar, 1, 2);
 

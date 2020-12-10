@@ -20,6 +20,8 @@ class List // zmienna obslugujaca liste dwukierunkowa
 
     int operator [](int index);
 
+    Node* give_me_node(int index);
+
     void push_beginning(int new_data);
 
     void push_end (int new_data);
@@ -56,6 +58,8 @@ class List // zmienna obslugujaca liste dwukierunkowa
     void swap_value(List myNodeVar, int index1, int index2);
 
     void swap_(List myNodeVar, int index1, int index2);
+
+    int size_();
 
     void display();
     //private:
