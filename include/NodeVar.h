@@ -3,16 +3,22 @@
 
 using namespace std;
 
-class List // zmienna obslugujaca liste dwukierunkowa
+class List
 {
-    public:
-       Node* head; // wskazuje na 1. element listy
-       Node* tail; // wskazuje na ostatnie element listy
-       unsigned count; // zawiera liczbe elementow przechowywanych na liscie
+private:
 
-// Unless a value is assigned, a pointer will point to some garbage address by default.
-// Besides memory addresses, there is one additional value that a pointer can hold: a null value.
-//  A null value is a special value that means the pointer is not pointing at anything. A pointer holding a null value is called a null pointer.
+    Node* give_me_node(int index);
+
+    void insert_after(Node* prev_node, int new_data);
+
+    void insert_before(Node* next_node, int new_data);
+
+    void n_remove (Node* Node_to_remove);
+
+public:
+       Node* head;
+       Node* tail;
+       unsigned count;
 
     List();
 
@@ -20,24 +26,11 @@ class List // zmienna obslugujaca liste dwukierunkowa
 
     int operator [](int index);
 
-    Node* give_me_node(int index);
-
     void push_beginning(int new_data);
 
     void push_end (int new_data);
 
-    /* Given a node as prev_node, insert a new node after the given node */
-    void insert_after(Node* prev_node, int new_data);
-
-    void insert_before(Node* next_node, int new_data);
-
-    // usuwanie wybranego elementu listy
-
-    void n_remove (Node* Node_to_remove);
-
     void remove_from_position(List myNodeVar_, int position);
-
-    //Usuwanie elementu z pocz¹tku listy
 
     void n_pop_front();
 
@@ -53,8 +46,6 @@ class List // zmienna obslugujaca liste dwukierunkowa
 
     void insert_at(int position, int value);
 
-    void swap_values(int val1, int val2);
-
     void swap_value(List myNodeVar, int index1, int index2);
 
     void swap_(List myNodeVar, int index1, int index2);
@@ -62,5 +53,4 @@ class List // zmienna obslugujaca liste dwukierunkowa
     int size_();
 
     void display();
-    //private:
 };
