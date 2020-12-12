@@ -92,7 +92,7 @@ int main()
 
      cout << "test_swap_: " << (test_swap_() ? " Success! " : " Failure") << endl;
 
-    // myNodeVar.swap_(myNodeVar, 1, 2);
+     myNodeVar.swap_(myNodeVar, 1, 2);
 
     cout << "test_size_: " << (test_size_() ? " Success! " : " Failure") << endl;
 
@@ -314,14 +314,18 @@ bool test_remove_from_position()
     obiekttestowy.push_beginning(1);
     obiekttestowy.push_beginning(3); // 3 1 4
 
+    cout << "obiekttestowy[0]"  << obiekttestowy[0] << endl;
+
     obiekttestowy.remove_from_position(obiekttestowy, 0);
 
-    if(obiekttestowy[2] == 4) // 3 1 4 - nic nie zostalo usuniete
+    cout << "obiekttestowy[0]"  << obiekttestowy[0] << endl;
+
+    obiekttestowy.display();
+
+    if(obiekttestowy[0] == 1) // 3 1 4 - nic nie zostalo usuniete
         return true;
 
     return false;
 }
-/*
 
-*/
 

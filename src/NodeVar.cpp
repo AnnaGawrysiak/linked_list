@@ -71,11 +71,14 @@ void List::n_remove (Node* Node_to_remove)
 {
     count--;
 
-
     if (Node_to_remove->prev != nullptr)
         Node_to_remove->prev->next = Node_to_remove->next;
     else
+        {
         head = Node_to_remove->next;
+        delete Node_to_remove;
+        return;
+        }
 
 
     if (Node_to_remove->next != nullptr)
@@ -313,6 +316,7 @@ void List::swap_(List myNodeVar, int index1, int index2)
     if (index1 == index2)
         return;
 
+
     Node* A = myNodeVar.give_me_node(index1);
     Node* B = myNodeVar.give_me_node(index2);
 
@@ -321,6 +325,27 @@ void List::swap_(List myNodeVar, int index1, int index2)
     Node* temp2_prev = B->prev;
     Node* temp2_next = B->next;
 
+    if (A->next == B)
+    {
+        A->next = temp1_next;
+        B->prev = temp2_prev;
+        A->prev = B;
+        B->next = A;
+        A->next->prev = B;
+        B->prev->next = A;
+    }
+
+    else if (B->next == A)
+    {
+        B->next = temp2_next;
+        A->prev = temp1_prev;
+        B->prev = A;
+        A->next = B;
+        B->next->prev = A;
+        A->prev->next = B;
+    }
+    else
+    {
     A->prev = temp2_prev;
     A->next = temp2_next;
 
@@ -339,7 +364,9 @@ void List::swap_(List myNodeVar, int index1, int index2)
     if (B->next != nullptr)
         B->next->prev = B;
 
-    if(index1 == 0)
+    }
+
+     if(index1 == 0)
         head = B;
 
     if(index2 == 0)
@@ -354,7 +381,6 @@ void List::swap_(List myNodeVar, int index1, int index2)
     {
         tail = B;
     }
-
 }
 
 int List::size_()

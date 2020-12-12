@@ -7,6 +7,12 @@ class List
 {
 private:
 
+      Node* head;
+
+      Node* tail;
+
+      unsigned count;
+
     Node* give_me_node(int index);
 
     void insert_after(Node* prev_node, int new_data);
@@ -16,9 +22,6 @@ private:
     void n_remove (Node* Node_to_remove);
 
 public:
-       Node* head;
-       Node* tail;
-       unsigned count;
 
     List();
 
