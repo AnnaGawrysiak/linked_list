@@ -92,7 +92,7 @@ int main()
 
      cout << "test_swap_: " << (test_swap_() ? " Success! " : " Failure") << endl;
 
-     myNodeVar.swap_(myNodeVar, 1, 2);
+     myNodeVar.swap_(1, 2);
 
     cout << "test_size_: " << (test_size_() ? " Success! " : " Failure") << endl;
 
@@ -266,7 +266,7 @@ bool test_swap_value()
     obiekttestowy.push_beginning(1);
     obiekttestowy.push_beginning(4); // 4 1 4
 
-   obiekttestowy.swap_value(obiekttestowy, 1, 0);
+   obiekttestowy.swap_value(1, 0);
 
     if(obiekttestowy[0] ==1 && obiekttestowy[1] == 4)
         return true;
@@ -282,7 +282,7 @@ bool test_swap_()
     obiekttestowy.push_beginning(1);
     obiekttestowy.push_beginning(4);
 
-   obiekttestowy.swap_value(obiekttestowy, 1, 0);
+   obiekttestowy.swap_value(1, 0);
 
     if(obiekttestowy[0] ==1 && obiekttestowy[1] == 4)
         return true;
@@ -314,11 +314,7 @@ bool test_remove_from_position()
     obiekttestowy.push_beginning(1);
     obiekttestowy.push_beginning(3); // 3 1 4
 
-    cout << "obiekttestowy[0]"  << obiekttestowy[0] << endl;
-
-    obiekttestowy.remove_from_position(obiekttestowy, 0);
-
-    cout << "obiekttestowy[0]"  << obiekttestowy[0] << endl;
+    obiekttestowy.remove_from_position(0);
 
     obiekttestowy.display();
 

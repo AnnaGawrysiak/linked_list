@@ -33,7 +33,7 @@ public:
 
     void push_end (int new_data);
 
-    void remove_from_position(List myNodeVar_, int position);
+    void remove_from_position(int position);
 
     void n_pop_front();
 
@@ -49,9 +49,9 @@ public:
 
     void insert_at(int position, int value);
 
-    void swap_value(List myNodeVar, int index1, int index2);
+    void swap_value(int index1, int index2);
 
-    void swap_(List myNodeVar, int index1, int index2);
+    void swap_(int index1, int index2);
 
     int size_();
 

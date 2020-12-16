@@ -40,7 +40,7 @@ void List::insert_after(Node* prev_node, int new_data)
 
    newNode->prev = prev_node;
 
-   if (newNode->next != NULL)
+   if (newNode->next != nullptr)
    newNode->next->prev = newNode;
    else tail = newNode;
 
@@ -143,29 +143,22 @@ void List::push_end(int new_data)
 
 }
 
-void List::remove_from_position (List myNodeVar_, int position)
+void List::remove_from_position (int position)
 {
-    myNodeVar_.n_remove(myNodeVar_.give_me_node(position));
+    n_remove(give_me_node(position));
 }
 
 void List::n_pop_front()
 {
-    if (count != 0)
-    {
-        head->next->prev = nullptr;
-        head = head -> next;
-        head -> prev = nullptr;
-    }
-}
-
-void List::n_pop_back()
-{
-    if (head == nullptr)
+   if (head == nullptr)
         return;
 
     else if (head->next == nullptr)
     {
-        head = nullptr;
+        Node* delNode = head; // Save address of node to delete in a pointer
+        head = head->next;
+        tail = nullptr;
+        delete delNode;
         count--;
 
         return;
@@ -173,11 +166,43 @@ void List::n_pop_back()
 
     else
     {
+        Node* delNode = head; // Save address of node to delete in a pointer
+        head = head->next;
+        head->prev = nullptr;
+        delete delNode;
+
+        count--;
+
+        return;
+    }
+}
+
+void List::n_pop_back()
+
+{
+    if (head == nullptr)
+        return;
+
+    else if (head->next == nullptr)
+    {
+        Node* delNode = tail; // Save address of node to delete in a pointer
+        tail = tail->prev;
+        head = nullptr;
+        delete delNode;
+        count--;
+
+        return;
+    }
+
+    else
+    {
+        Node* delNode = tail; // Save address of node to delete in a pointer
         tail = tail->prev;
         tail->next = nullptr;
+        delete delNode;
 
-        tail->next = nullptr;
         count--;
+
         return;
     }
 }
@@ -269,8 +294,12 @@ int List::find_min()
 
 void List::insert_at(int position, int value)
 {
-    if (count == 0)
-        return;
+    if (position > size_())
+    {
+       cout << "Warning: position exceeds size of the list" << endl;
+
+       return;
+    }
 
     Node* newNode = new Node;
 
@@ -298,17 +327,17 @@ void List::insert_at(int position, int value)
 
 }
 
-void List::swap_value(List myNodeVar, int index1, int index2)
+void List::swap_value(int index1, int index2)
 {
     int temp = 0;
 
-    temp = myNodeVar.give_me_node(index1)->data;
-    myNodeVar.give_me_node(index1)->data = myNodeVar.give_me_node(index2)->data;
-    myNodeVar.give_me_node(index2)->data = temp;
+    temp = give_me_node(index1)->data;
+   give_me_node(index1)->data = give_me_node(index2)->data;
+   give_me_node(index2)->data = temp;
 }
 
 
-void List::swap_(List myNodeVar, int index1, int index2)
+void List::swap_(int index1, int index2)
 {
     if (count == 0 || count ==1)
         return;
@@ -317,8 +346,8 @@ void List::swap_(List myNodeVar, int index1, int index2)
         return;
 
 
-    Node* A = myNodeVar.give_me_node(index1);
-    Node* B = myNodeVar.give_me_node(index2);
+    Node* A = give_me_node(index1);
+    Node* B = give_me_node(index2);
 
     Node* temp1_prev = A->prev;
     Node* temp1_next = A->next;
@@ -327,66 +356,79 @@ void List::swap_(List myNodeVar, int index1, int index2)
 
     if (A->next == B)
     {
-        A->next = temp1_next;
-        B->prev = temp2_prev;
+        A->next = temp2_next;
         A->prev = B;
+        A->next->prev = A;
+
+        B->prev = temp1_prev;
         B->next = A;
-        A->next->prev = B;
-        B->prev->next = A;
+        B->prev->next = B;
     }
 
     else if (B->next == A)
     {
-        B->next = temp2_next;
-        A->prev = temp1_prev;
+        B->next = temp1_next;
         B->prev = A;
-        A->next = B;
-        B->next->prev = A;
-        A->prev->next = B;
-    }
-    else
-    {
-    A->prev = temp2_prev;
-    A->next = temp2_next;
-
-    B->prev = temp1_prev;
-    B->next = temp1_next;
-
-    if (A->prev != nullptr)
-        A->prev->next = A;
-
-    if (A->next != nullptr)
-        A->next->prev = A;
-
-    if (B->prev != nullptr)
-        B->prev->next = B;
-
-    if (B->next != nullptr)
         B->next->prev = B;
 
+        A->prev = temp2_prev;
+        A->next = B;
+        A->prev->next = A;
     }
 
-     if(index1 == 0)
-        head = B;
+    else
+    {
+        A->prev = temp2_prev;
+        A->next = temp2_next;
 
-    if(index2 == 0)
+        B->prev = temp1_prev;
+        B->next = temp1_next;
+
+        if (A->prev != nullptr)
+            A->prev->next = A;
+
+        if (A->next != nullptr)
+            A->next->prev = A;
+
+        if (B->prev != nullptr)
+            B->prev->next = B;
+
+        if (B->next != nullptr)
+            B->next->prev = B;
+    }
+
+    if(A->prev == nullptr)
+    {
         head = A;
+    }
 
-    if(index1==myNodeVar.size_())
+    if(B->prev == nullptr)
+    {
+        head = B;
+    }
+
+    if(A->next == nullptr)
     {
         tail = A;
     }
 
-    if(index2==myNodeVar.size_())
+    if(B->next == nullptr)
     {
         tail = B;
     }
+
 }
 
 int List::size_()
 {
+    int size_ = 0;
+
+    if(head==nullptr)
+    {
+        return size_;
+    }
+
     Node* temp = head;
-    int size_ = 1;
 
     while (temp->next != nullptr)
     {
@@ -394,7 +436,7 @@ int List::size_()
         size_++;
     }
 
-return size_;
+return (size_+1);
 }
 
 
