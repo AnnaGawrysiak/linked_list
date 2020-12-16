@@ -217,7 +217,7 @@ bool test_bubble_sort()
 
     obiekttestowy.bubble_sort();
 
-    if((obiekttestowy[0] < obiekttestowy[1]) && (obiekttestowy[1] < obiekttestowy[2]))
+    if(obiekttestowy[0] == 1 && obiekttestowy[1] == 4 && obiekttestowy[2] == 5)
         return true;
 
     return false;
@@ -234,7 +234,7 @@ bool test_find_min()
 
     int min = obiekttestowy.find_min();
 
-    if((min == obiekttestowy[1]))
+    if((min == 1))
         return true;
 
     return false;

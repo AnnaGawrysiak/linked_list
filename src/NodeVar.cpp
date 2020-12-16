@@ -155,10 +155,10 @@ void List::n_pop_front()
 
     else if (head->next == nullptr)
     {
-        Node* delNode = head; // Save address of node to delete in a pointer
-        head = head->next;
+        delete head;
+        head = nullptr;
         tail = nullptr;
-        delete delNode;
+
         count--;
 
         return;
@@ -166,10 +166,10 @@ void List::n_pop_front()
 
     else
     {
-        Node* delNode = head; // Save address of node to delete in a pointer
-        head = head->next;
-        head->prev = nullptr;
-        delete delNode;
+        Node* temp = head->next;
+        temp->prev = nullptr;
+        delete head;
+        head = temp;
 
         count--;
 
