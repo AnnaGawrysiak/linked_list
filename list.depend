@@ -22,18 +22,15 @@
 	"NodeVar.h"
 	"testowa.h"
 
-1610476236 c:\users\ania\onedrive\pulpit\programowanie\programowanie_lekcje\list\doubly_linked_list\include\nodevar.h
+1610482472 c:\users\ania\onedrive\pulpit\programowanie\programowanie_lekcje\list\doubly_linked_list\include\nodevar.h
 	"Node.h"
 
-1610480587 c:\users\ania\onedrive\pulpit\programowanie\programowanie_lekcje\list\doubly_linked_list\include\node.h
+1610481288 c:\users\ania\onedrive\pulpit\programowanie\programowanie_lekcje\list\doubly_linked_list\include\node.h
 	<iostream>
 
-1610477392 source:c:\users\ania\onedrive\pulpit\programowanie\programowanie_lekcje\list\doubly_linked_list\src\node.cpp
-	"NodeVar.h"
-	"Node.h"
+1610481288 source:c:\users\ania\onedrive\pulpit\programowanie\programowanie_lekcje\list\doubly_linked_list\src\node.cpp
 
-1610480271 source:c:\users\ania\onedrive\pulpit\programowanie\programowanie_lekcje\list\doubly_linked_list\src\nodevar.cpp
-	"NodeVar.h"
+1610482472 source:c:\users\ania\onedrive\pulpit\programowanie\programowanie_lekcje\list\doubly_linked_list\src\nodevar.cpp
 	"Node.h"
 
 1610478300 source:c:\users\ania\onedrive\pulpit\programowanie\programowanie_lekcje\list\doubly_linked_list\src\testowa.cpp
