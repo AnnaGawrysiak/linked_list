@@ -1,25 +1,28 @@
 #include "NodeVar.h"
 #include "Node.h"
 
-
-Node::Node()
+template <typename T>
+Node<T>::Node()
 {
     //ctor
 }
 
-Node::Node(const Node& a)
+template <typename T>
+Node<T>::Node(const Node& a)
 {
     data= a.data;
     next = a.next;
     prev = a.prev;
 }
 
-Node::~Node()
+template <typename T>
+Node<T>::~Node()
 {
     //dtor
 }
 
-Node& Node::operator=(const Node &rhs)
+template <typename T>
+Node<T>& Node<T>::operator=(const Node &rhs)
 {
     if (&rhs!=this)
     {
@@ -38,3 +41,6 @@ Node& Node::operator=(const Node &rhs)
    return *this;
    //this->other_data = n.other_data;
 }
+
+template class Node<int>;
+

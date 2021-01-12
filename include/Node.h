@@ -4,10 +4,11 @@
 using namespace std;
 
 // A doubly linked list node
+template <typename T>
 class Node // element listy dwukierunkowej
 {
     public:
-        int data;
+        T  data;
         Node* next;
         Node* prev;
         Node();

@@ -1,24 +1,27 @@
 #include "NodeVar.h"
 #include "Node.h"
 
-List::List()
+template<typename T>
+List<T>::List()
 {
     head = nullptr;
     tail = nullptr;
     count = 0;
 }
 
-List::~List()
+template<typename T>
+List<T>::~List()
 {
 
 }
 
-Node* List::give_me_node(int index)
+template<typename T>
+Node<T>* List<T>::give_me_node(int index)
 {
     if (index == 0)
         return head;
 
-    Node* temp = head;
+    Node<T>* temp = head;
 
     for (int i = 0; i < index; i++)
     {
@@ -28,9 +31,10 @@ Node* List::give_me_node(int index)
     return temp;
 }
 
-void List::insert_after(Node* prev_node, int new_data)
+template<typename T>
+void List<T>::insert_after(Node<T>* prev_node, T new_data)
 {
-   Node* newNode = new Node;
+   Node<T>* newNode = new Node<T>;
 
    newNode->data = new_data;
 
@@ -47,9 +51,10 @@ void List::insert_after(Node* prev_node, int new_data)
     count++;
 }
 
-void List::insert_before(Node* next_node, int new_data)
+template<typename T>
+void List<T>::insert_before(Node<T>* next_node, T new_data)
 {
-   Node* newNode = new Node;
+   Node<T>* newNode = new Node<T>;
 
    newNode->data = new_data;
 
@@ -67,7 +72,8 @@ void List::insert_before(Node* next_node, int new_data)
    count++;
 }
 
-void List::n_remove (Node* Node_to_remove)
+template<typename T>
+void List<T>::n_remove (Node<T>* Node_to_remove)
 {
     count--;
 
@@ -92,10 +98,10 @@ void List::n_remove (Node* Node_to_remove)
 
 }
 
-
-int List::operator [](int index)
+template<typename T>
+int List<T>::operator [](int index)
 {
-    Node* temp = head;
+    Node<T>* temp = head;
 
     for (int i = 0; i < index; i++)
     {
@@ -105,9 +111,10 @@ int List::operator [](int index)
     return temp->data;
 }
 
-void List::push_beginning(int new_data)
+template<typename T>
+void List<T>::push_beginning(T new_data)
 {
-   Node* newNode = new Node;
+   Node<T>* newNode = new Node<T>;
 
    newNode->data = new_data;
    newNode->prev = nullptr;
@@ -124,9 +131,10 @@ void List::push_beginning(int new_data)
 
 }
 
-void List::push_end(int new_data)
+template<typename T>
+void List<T>::push_end(T new_data)
 {
-   Node* newNode = new Node;
+   Node<T>* newNode = new Node<T>;
 
    newNode->data = new_data;
    newNode->prev = tail;
@@ -143,12 +151,14 @@ void List::push_end(int new_data)
 
 }
 
-void List::remove_from_position (int position)
+template<typename T>
+void List<T>::remove_from_position (int position)
 {
     n_remove(give_me_node(position));
 }
 
-void List::n_pop_front()
+template<typename T>
+void List<T>::n_pop_front()
 {
    if (head == nullptr)
         return;
@@ -166,7 +176,7 @@ void List::n_pop_front()
 
     else
     {
-        Node* temp = head->next;
+        Node<T>* temp = head->next;
         temp->prev = nullptr;
         delete head;
         head = temp;
@@ -177,7 +187,8 @@ void List::n_pop_front()
     }
 }
 
-void List::n_pop_back()
+template<typename T>
+void List<T>::n_pop_back()
 
 {
     if (head == nullptr)
@@ -185,7 +196,7 @@ void List::n_pop_back()
 
     else if (head->next == nullptr)
     {
-        Node* delNode = tail; // Save address of node to delete in a pointer
+        Node<T>* delNode = tail; // Save address of node to delete in a pointer
         tail = tail->prev;
         head = nullptr;
         delete delNode;
@@ -196,7 +207,7 @@ void List::n_pop_back()
 
     else
     {
-        Node* delNode = tail; // Save address of node to delete in a pointer
+        Node<T>* delNode = tail; // Save address of node to delete in a pointer
         tail = tail->prev;
         tail->next = nullptr;
         delete delNode;
@@ -207,10 +218,11 @@ void List::n_pop_back()
     }
 }
 
-void List::reverseList()
+template<typename T>
+void List<T>::reverseList()
 {
-       Node *current = head;
-       Node *prev = nullptr;
+       Node<T> *current = head;
+       Node<T> *prev = nullptr;
 
        tail = head;
 
@@ -226,12 +238,13 @@ void List::reverseList()
         head = prev;
     }
 
-Node* List::linear_search(int value)
+template<typename T>
+Node<T>* List<T>::linear_search(T value)
 {
     if (head == nullptr)
         return nullptr;
 
-    Node *temp = head;
+    Node<T> *temp = head;
 
     while(temp != tail && temp->data != value )
         {
@@ -245,13 +258,13 @@ Node* List::linear_search(int value)
 
 }
 
-
-void List::bubble_sort()
+template<typename T>
+void List<T>::bubble_sort()
 {
     if (head == nullptr)
         return;
 
-    Node *temp = head;
+    Node<T> *temp = head;
 
     do
     {
@@ -267,10 +280,10 @@ void List::bubble_sort()
     } while (temp->next!=nullptr);
 }
 
-
-int List::find_min()
+template<typename T>
+int List<T>::find_min()
 {
-    Node* ptr = head;
+    Node<T>* ptr = head;
 
     int found_min = ptr->data;
 
@@ -292,7 +305,8 @@ int List::find_min()
 
 }
 
-void List::insert_at(int position, int value)
+template<typename T>
+void List<T>::insert_at(int position, T value)
 {
     if (position > size_())
     {
@@ -301,11 +315,11 @@ void List::insert_at(int position, int value)
        return;
     }
 
-    Node* newNode = new Node;
+    Node<T>* newNode = new Node<T>;
 
     newNode->data = value;
 
-    Node* temp = head;
+    Node<T>* temp = head;
 
     for (int i = 0; i < position; i++)
     {
@@ -327,7 +341,8 @@ void List::insert_at(int position, int value)
 
 }
 
-void List::swap_value(int index1, int index2)
+template<typename T>
+void List<T>::swap_value(int index1, int index2)
 {
     int temp = 0;
 
@@ -337,7 +352,8 @@ void List::swap_value(int index1, int index2)
 }
 
 
-void List::swap_(int index1, int index2)
+template<typename T>
+void List<T>::swap_(int index1, int index2)
 {
     if (count == 0 || count ==1)
         return;
@@ -346,13 +362,13 @@ void List::swap_(int index1, int index2)
         return;
 
 
-    Node* A = give_me_node(index1);
-    Node* B = give_me_node(index2);
+    Node<T>* A = give_me_node(index1);
+    Node<T>* B = give_me_node(index2);
 
-    Node* temp1_prev = A->prev;
-    Node* temp1_next = A->next;
-    Node* temp2_prev = B->prev;
-    Node* temp2_next = B->next;
+    Node<T>* temp1_prev = A->prev;
+    Node<T>* temp1_next = A->next;
+    Node<T>* temp2_prev = B->prev;
+    Node<T>* temp2_next = B->next;
 
     if (A->next == B)
     {
@@ -419,7 +435,9 @@ void List::swap_(int index1, int index2)
 
 }
 
-int List::size_()
+
+template<typename T>
+int List<T>::size_()
 {
     int size_ = 0;
 
@@ -428,7 +446,7 @@ int List::size_()
         return size_;
     }
 
-    Node* temp = head;
+    Node<T>* temp = head;
 
     while (temp->next != nullptr)
     {
@@ -439,8 +457,8 @@ int List::size_()
 return (size_+1);
 }
 
-
-void List::display()
+template<typename T>
+void List<T>::display()
 {
     if (head == nullptr)
     {
@@ -448,7 +466,7 @@ void List::display()
         return;
     }
 
-   Node* ptr = head;
+   Node<T>* ptr = head;
 
    cout << "Elements of the list: ";
 
@@ -463,3 +481,5 @@ void List::display()
           return;
     };
 }
+
+template class List<int>;

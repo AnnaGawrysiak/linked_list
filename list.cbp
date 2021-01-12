@@ -36,9 +36,11 @@
 		</Compiler>
 		<Unit filename="include/Node.h" />
 		<Unit filename="include/NodeVar.h" />
+		<Unit filename="include/testowa.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Node.cpp" />
 		<Unit filename="src/NodeVar.cpp" />
+		<Unit filename="src/testowa.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

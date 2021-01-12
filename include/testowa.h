@@ -1,119 +1,13 @@
-#include <iostream>
+#pragma once
 #include "NodeVar.h"
-#include "testowa.h"
+#include "Node.h"
 
-using namespace std;
-/*
-template <typename T>
-int operator +(const  Node<T> &lhs, const  Node<T> &rhs);
-
-bool test_push_beginning();
-
-bool test_push_end();
-
-bool test_n_pop_front();
-
-bool test_n_pop_back();
-
-bool test_reverseList();
-
-bool test_linear_search();
-
-bool test_bubble_sort();
-
-bool test_find_min();
-
-bool test_insert_at();
-
-bool test_swap_value();
-
-bool test_swap_();
-
-bool test_size_();
-
-bool test_remove_from_position();
-*/
-int main()
-{
-
-   List<int> myNodeVar;
-
-   myNodeVar.push_beginning(20);
-   myNodeVar.push_beginning(22);
-   myNodeVar.push_beginning(23);
-   myNodeVar.push_beginning(25);
-   myNodeVar.push_beginning(26);
-   myNodeVar.push_beginning(21);
-
-   testowa<int> test;
-
-    cout << "test_push_beginning: " << (test.test_push_beginning() ? " Success! " : " Failure") << endl;
-
-    myNodeVar.push_end(40);
-    myNodeVar.push_end(43);
-    myNodeVar.push_end(4);
-    myNodeVar.push_end(49);
-
-    cout << "test_push_end: " << (test.test_push_end() ? " Success! " : " Failure") << endl;
-
-    myNodeVar.n_pop_front();
-
-    cout << "test_n_pop_front: " << (test.test_n_pop_front() ? " Success! " : " Failure") << endl;
-
-     myNodeVar.n_pop_back();
-
-    cout << "test_n_pop_back: " << (test.test_n_pop_back() ? " Success! " : " Failure") << endl;
-
-    myNodeVar.reverseList();
-
-     cout << "test_reverse_list: " << (test.test_reverseList() ? " Success! " : " Failure") << endl;
-
-     int searched_value = 25;
-
-    if (myNodeVar.linear_search(searched_value) != nullptr)
-
-        cout << "Value " << searched_value << " has been found at position: " << myNodeVar.linear_search(searched_value) << endl;
-    else
-        cout << "Searched value has not been found. " << endl;
-
-     cout << "test_linear_search: " << (test.test_linear_search() ? " Success! " : " Failure") << endl;
-
-      myNodeVar.bubble_sort();
-
-    cout << "test_bubble_sort: " << (test.test_bubble_sort() ? " Success! " : " Failure") << endl;
-
-    myNodeVar.bubble_sort();
-
-    cout << "Minimum value is: " << myNodeVar.find_min() << endl;
-
-    cout << "test_find_min: " << (test.test_find_min() ? " Success! " : " Failure") << endl;
-
-     myNodeVar.insert_at(3, 12);
-
-     cout << "test_insert_at: " << (test.test_insert_at() ? " Success! " : " Failure") << endl;
-
-    cout << "test_swap_value: " << (test.test_swap_value() ? " Success! " : " Failure") << endl;
-
-     cout << "test_swap_: " << (test.test_swap_() ? " Success! " : " Failure") << endl;
-
-     myNodeVar.swap_(1, 2);
-
-    cout << "test_size_: " << (test.test_size_() ? " Success! " : " Failure") << endl;
-
-    cout << "test_remove_from_position: " << (test.test_remove_from_position() ? " Success! " : " Failure") << endl;
-
-    myNodeVar.display();
-
-    return 0;
-}
-/*
-template<typename T>
-int operator +(const Node<T> &lhs, const Node<T> &rhs)
-{
-    return (lhs.data + rhs.data);
-}
 
 template<typename T>
+class testowa
+{
+public:
+
 bool test_push_beginning()
 {
     List<T> obiekttestowy;
@@ -132,7 +26,6 @@ bool test_push_beginning()
 
 }
 
-template<typename T>
 bool test_push_end()
 {
     List<T> obiekttestowy;
@@ -146,7 +39,6 @@ bool test_push_end()
     return false;
 }
 
-template<typename T>
 bool test_n_pop_front()
 {
     List<T> obiekttestowy;
@@ -164,7 +56,6 @@ bool test_n_pop_front()
 
 }
 
-template<typename T>
 bool test_n_pop_back()
 {
     List<T> obiekttestowy;
@@ -182,7 +73,6 @@ bool test_n_pop_back()
 
 }
 
-template<typename T>
 bool test_reverseList()
 {
      List<T> obiekttestowy;
@@ -200,7 +90,6 @@ bool test_reverseList()
 
 }
 
-template<typename T>
 bool test_linear_search()
 {
      List<T> obiekttestowy;
@@ -218,7 +107,6 @@ bool test_linear_search()
 
 }
 
-template<typename T>
 bool test_bubble_sort()
 {
      List<T> obiekttestowy;
@@ -236,7 +124,6 @@ bool test_bubble_sort()
 
 }
 
-template<typename T>
 bool test_find_min()
 {
     List<T> obiekttestowy;
@@ -254,7 +141,7 @@ bool test_find_min()
 
 }
 
-template<typename T>
+
 bool test_insert_at()
 {
     List<T> obiekttestowy;
@@ -272,7 +159,7 @@ bool test_insert_at()
 
 }
 
-template<typename T>
+
 bool test_swap_value()
 {
     List<T> obiekttestowy;
@@ -288,7 +175,7 @@ bool test_swap_value()
     return false;
 }
 
-template<typename T>
+
 bool test_swap_()
 {
     List<T> obiekttestowy;
@@ -305,7 +192,7 @@ bool test_swap_()
     return false;
 }
 
-template<typename T>
+
 bool test_size_()
 {
     List<T> obiekttestowy;
@@ -322,7 +209,6 @@ bool test_size_()
     return false;
 }
 
-template<typename T>
 bool test_remove_from_position()
 {
     List<T> obiekttestowy;
@@ -340,4 +226,4 @@ bool test_remove_from_position()
 
     return false;
 }
-*/
+};

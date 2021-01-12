@@ -3,23 +3,24 @@
 
 using namespace std;
 
+template<typename T>
 class List
 {
 private:
 
-      Node* head;
+      Node<T>* head;
 
-      Node* tail;
+       Node<T>* tail;
 
       unsigned count;
 
-    Node* give_me_node(int index);
+     Node<T>* give_me_node(int index);
 
-    void insert_after(Node* prev_node, int new_data);
+    void insert_after( Node<T>* prev_node, T new_data);
 
-    void insert_before(Node* next_node, int new_data);
+    void insert_before( Node<T>* next_node, T new_data);
 
-    void n_remove (Node* Node_to_remove);
+    void n_remove ( Node<T>* Node_to_remove);
 
 public:
 
@@ -29,9 +30,9 @@ public:
 
     int operator [](int index);
 
-    void push_beginning(int new_data);
+    void push_beginning(T new_data);
 
-    void push_end (int new_data);
+    void push_end (T new_data);
 
     void remove_from_position(int position);
 
@@ -41,13 +42,13 @@ public:
 
     void reverseList();
 
-    Node* linear_search(int value);
+    Node<T>* linear_search(T value);
 
     void bubble_sort();
 
     int find_min();
 
-    void insert_at(int position, int value);
+    void insert_at(int position, T value);
 
     void swap_value(int index1, int index2);
 
