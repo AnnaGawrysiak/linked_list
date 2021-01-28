@@ -1,24 +1,23 @@
-/*
 #include "testowa.h"
-#include "NodeVar.h"
-#include "Node.h"
 
-template<typename T>
-testowa<T>::testowa()
+testowa::testowa()
 {
-    //ctor
 }
 
-template<typename T>
-testowa<T>::~testowa()
+testowa* testowa::wsk = nullptr;
+
+testowa* testowa::get_instance()
 {
-    //dtor
+    if(!wsk)
+    wsk = new testowa(); // przez new nalezy explicite konstruktor wywolac
+
+    return wsk;
+
 }
 
-template<typename T>
-bool test_push_beginning()
+bool testowa::test_push_beginning()
 {
-    List<T> obiekttestowy;
+    List<int> obiekttestowy;
 
     obiekttestowy.push_beginning(41);
     obiekttestowy.push_beginning(42);
@@ -34,10 +33,9 @@ bool test_push_beginning()
 
 }
 
-template<typename T>
-bool test_push_end()
+bool testowa::test_push_end()
 {
-    List<T> obiekttestowy;
+    List<int > obiekttestowy;
 
     obiekttestowy.push_end(4);
     obiekttestowy.push_end(5);
@@ -48,10 +46,9 @@ bool test_push_end()
     return false;
 }
 
-template<typename T>
-bool test_n_pop_front()
+bool testowa::test_n_pop_front()
 {
-    List<T> obiekttestowy;
+    List<int> obiekttestowy;
 
     obiekttestowy.push_beginning(4);
     obiekttestowy.push_beginning(3);
@@ -66,10 +63,9 @@ bool test_n_pop_front()
 
 }
 
-template<typename T>
-bool test_n_pop_back()
+bool testowa::test_n_pop_back()
 {
-    List<T> obiekttestowy;
+    List<int> obiekttestowy;
 
     obiekttestowy.push_beginning(4);
     obiekttestowy.push_beginning(3);
@@ -84,10 +80,9 @@ bool test_n_pop_back()
 
 }
 
-template<typename T>
-bool test_reverseList()
+bool testowa::test_reverseList()
 {
-     List<T> obiekttestowy;
+     List<int> obiekttestowy;
 
     obiekttestowy.push_beginning(1);
     obiekttestowy.push_beginning(2);
@@ -102,16 +97,15 @@ bool test_reverseList()
 
 }
 
-template<typename T>
-bool test_linear_search()
+bool testowa::test_linear_search()
 {
-     List<T> obiekttestowy;
+     List<int> obiekttestowy;
 
     obiekttestowy.push_beginning(1);
     obiekttestowy.push_beginning(2);
     obiekttestowy.push_beginning(3);
 
-   T solution = obiekttestowy.linear_search(2)->data;
+   int solution = obiekttestowy.linear_search(2)->data;
 
     if(solution == 2)
         return true;
@@ -120,10 +114,9 @@ bool test_linear_search()
 
 }
 
-template<typename T>
-bool test_bubble_sort()
+bool testowa::test_bubble_sort()
 {
-     List<T> obiekttestowy;
+     List<int> obiekttestowy;
 
     obiekttestowy.push_beginning(4);
     obiekttestowy.push_beginning(1);
@@ -138,16 +131,15 @@ bool test_bubble_sort()
 
 }
 
-template<typename T>
-bool test_find_min()
+bool testowa::test_find_min()
 {
-    List<T> obiekttestowy;
+    List<int> obiekttestowy;
 
     obiekttestowy.push_beginning(4);
     obiekttestowy.push_beginning(1);
     obiekttestowy.push_beginning(5);
 
-    T min = obiekttestowy.find_min();
+    int min = obiekttestowy.find_min();
 
     if((min == 1))
         return true;
@@ -156,10 +148,10 @@ bool test_find_min()
 
 }
 
-template<typename T>
-bool test_insert_at()
+
+bool testowa::test_insert_at()
 {
-    List<T> obiekttestowy;
+    List<int> obiekttestowy;
 
     obiekttestowy.push_beginning(4);
     obiekttestowy.push_beginning(1);
@@ -174,10 +166,10 @@ bool test_insert_at()
 
 }
 
-template<typename T>
-bool test_swap_value()
+
+bool testowa::test_swap_value()
 {
-    List<T> obiekttestowy;
+    List<int> obiekttestowy;
     obiekttestowy.push_beginning(4);
     obiekttestowy.push_beginning(1);
     obiekttestowy.push_beginning(4); // 4 1 4
@@ -190,10 +182,10 @@ bool test_swap_value()
     return false;
 }
 
-template<typename T>
-bool test_swap_()
+
+bool testowa::test_swap_()
 {
-    List<T> obiekttestowy;
+    List<int> obiekttestowy;
 
     obiekttestowy.push_beginning(4);
     obiekttestowy.push_beginning(1);
@@ -207,10 +199,10 @@ bool test_swap_()
     return false;
 }
 
-template<typename T>
-bool test_size_()
+
+bool testowa::test_size_()
 {
-    List<T> obiekttestowy;
+    List<int> obiekttestowy;
 
     obiekttestowy.push_beginning(4);
     obiekttestowy.push_beginning(1);
@@ -224,10 +216,9 @@ bool test_size_()
     return false;
 }
 
-template<typename T>
-bool test_remove_from_position()
+bool testowa::test_remove_from_position()
 {
-    List<T> obiekttestowy;
+    List<int> obiekttestowy;
 
     obiekttestowy.push_beginning(4);
     obiekttestowy.push_beginning(1);
@@ -243,5 +234,8 @@ bool test_remove_from_position()
     return false;
 }
 
-template class testowa<int>;
-*/
+void testowa::testowa::run()
+{
+ cout << "test_push_beginning: " << (test_push_beginning() ? " Success! " : " Failure") << endl;
+}
+

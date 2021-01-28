@@ -2,63 +2,52 @@
 #include "NodeVar.h"
 #include "Node.h"
 
-
-template<typename T>
 class testowa
 {
+private:
+    testowa();
+    static testowa* wsk;
+
 public:
+void operator = (const testowa&) = delete;
+testowa (const testowa&) = delete;
 
-bool test_push_beginning()
-{
-    List<T> obiekttestowy;
+static testowa* get_instance();
 
-    obiekttestowy.push_beginning(41);
-    obiekttestowy.push_beginning(42);
-    obiekttestowy.push_beginning(35);
-    obiekttestowy.push_beginning(9);
-    obiekttestowy.push_beginning(4);
-    obiekttestowy.push_beginning(3);
+bool test_push_beginning();
 
-    if (obiekttestowy[0]==3)
-       return true;
+bool test_push_end();
 
-    return false;
+bool test_n_pop_front();
 
-}
+bool test_n_pop_back();
 
-bool test_push_end()
-{
-    List<T> obiekttestowy;
+bool test_reverseList();
 
-    obiekttestowy.push_end(4);
-    obiekttestowy.push_end(5);
+bool test_linear_search();
 
-    if(obiekttestowy[1]==5)
-        return true;
+bool test_bubble_sort();
 
-    return false;
-}
+bool test_find_min();
 
-bool test_n_pop_front()
-{
-    List<T> obiekttestowy;
+bool test_insert_at();
 
-    obiekttestowy.push_beginning(4);
-    obiekttestowy.push_beginning(3);
-    obiekttestowy.push_beginning(2);
+bool test_swap_value();
 
-    obiekttestowy.n_pop_front();
+bool test_swap_();
 
-    if (obiekttestowy[0]==3)
-        return true;
+bool test_size_();
 
-    return false;
+bool test_remove_from_position();
 
-}
+void run(); // obiekt testowy mamy tylko jeden i mozemy go sobie wywolywac ile chcemy
 
+};
+
+/*
 bool test_n_pop_back()
 {
-    List<T> obiekttestowy;
+    List<int> obiekttestowy;
 
     obiekttestowy.push_beginning(4);
     obiekttestowy.push_beginning(3);
@@ -75,7 +64,7 @@ bool test_n_pop_back()
 
 bool test_reverseList()
 {
-     List<T> obiekttestowy;
+     List<int> obiekttestowy;
 
     obiekttestowy.push_beginning(1);
     obiekttestowy.push_beginning(2);
@@ -92,13 +81,13 @@ bool test_reverseList()
 
 bool test_linear_search()
 {
-     List<T> obiekttestowy;
+     List<int> obiekttestowy;
 
     obiekttestowy.push_beginning(1);
     obiekttestowy.push_beginning(2);
     obiekttestowy.push_beginning(3);
 
-   T solution = obiekttestowy.linear_search(2)->data;
+   int solution = obiekttestowy.linear_search(2)->data;
 
     if(solution == 2)
         return true;
@@ -109,7 +98,7 @@ bool test_linear_search()
 
 bool test_bubble_sort()
 {
-     List<T> obiekttestowy;
+     List<int> obiekttestowy;
 
     obiekttestowy.push_beginning(4);
     obiekttestowy.push_beginning(1);
@@ -126,13 +115,13 @@ bool test_bubble_sort()
 
 bool test_find_min()
 {
-    List<T> obiekttestowy;
+    List<int> obiekttestowy;
 
     obiekttestowy.push_beginning(4);
     obiekttestowy.push_beginning(1);
     obiekttestowy.push_beginning(5);
 
-    T min = obiekttestowy.find_min();
+    int min = obiekttestowy.find_min();
 
     if((min == 1))
         return true;
@@ -141,10 +130,9 @@ bool test_find_min()
 
 }
 
-
 bool test_insert_at()
 {
-    List<T> obiekttestowy;
+    List<int> obiekttestowy;
 
     obiekttestowy.push_beginning(4);
     obiekttestowy.push_beginning(1);
@@ -159,10 +147,9 @@ bool test_insert_at()
 
 }
 
-
 bool test_swap_value()
 {
-    List<T> obiekttestowy;
+    List<int> obiekttestowy;
     obiekttestowy.push_beginning(4);
     obiekttestowy.push_beginning(1);
     obiekttestowy.push_beginning(4); // 4 1 4
@@ -175,10 +162,9 @@ bool test_swap_value()
     return false;
 }
 
-
 bool test_swap_()
 {
-    List<T> obiekttestowy;
+    List<int> obiekttestowy;
 
     obiekttestowy.push_beginning(4);
     obiekttestowy.push_beginning(1);
@@ -192,10 +178,9 @@ bool test_swap_()
     return false;
 }
 
-
 bool test_size_()
 {
-    List<T> obiekttestowy;
+    List<int> obiekttestowy;
 
     obiekttestowy.push_beginning(4);
     obiekttestowy.push_beginning(1);
@@ -211,7 +196,7 @@ bool test_size_()
 
 bool test_remove_from_position()
 {
-    List<T> obiekttestowy;
+    List<int> obiekttestowy;
 
     obiekttestowy.push_beginning(4);
     obiekttestowy.push_beginning(1);
@@ -226,4 +211,4 @@ bool test_remove_from_position()
 
     return false;
 }
-};
+*/
