@@ -14,84 +14,13 @@ private:
 
       unsigned count;
 
-     Node<T>* give_me_node(int index)
-     {
-        if (index == 0)
-            return head;
+     Node<T>* give_me_node(int index);
 
-        Node<T>* temp = head;
+    void insert_after( Node<T>* prev_node, T new_data);
 
-        for (int i = 0; i < index; i++)
-        {
-            temp = temp->next;
-        }
+    void insert_before( Node<T>* next_node, T new_data);
 
-        return temp;
-    }
-
-    void insert_after( Node<T>* prev_node, T new_data)
-    {
-       Node<T>* newNode = new Node<T>;
-
-       newNode->data = new_data;
-
-       newNode->next = prev_node->next;
-
-       prev_node->next = newNode;
-
-       newNode->prev = prev_node;
-
-       if (newNode->next != nullptr)
-       newNode->next->prev = newNode;
-       else tail = newNode;
-
-        count++;
-    }
-
-    void insert_before( Node<T>* next_node, T new_data)
-    {
-       Node<T>* newNode = new Node<T>;
-
-       newNode->data = new_data;
-
-       next_node->prev = newNode;
-
-       newNode->next = next_node;
-
-       if (newNode->prev != nullptr)
-       {
-           newNode->prev = next_node->prev->prev;
-           newNode->prev->next = newNode;
-       }
-       else head = newNode;
-
-       count++;
-    }
-
-    void n_remove ( Node<T>* Node_to_remove)
-    {
-        count--;
-
-        if (Node_to_remove->prev != nullptr)
-            Node_to_remove->prev->next = Node_to_remove->next;
-        else
-            {
-            head = Node_to_remove->next;
-            delete Node_to_remove;
-            return;
-            }
-
-
-        if (Node_to_remove->next != nullptr)
-            Node_to_remove->next->prev = Node_to_remove->prev;
-        else
-            tail = Node_to_remove->prev;
-
-            cout << "Node to remove: " << Node_to_remove->data << endl;
-
-             delete Node_to_remove;
-
-    }
+    void n_remove ( Node<T>* Node_to_remove);
 
 public:
 
@@ -119,7 +48,118 @@ public:
         return temp->data;
     }
 
-    void push_beginning(T new_data)
+    void push_beginning(T new_data);
+
+    void push_end (T new_data);
+
+    void remove_from_position(int position);
+
+    void n_pop_front();
+
+    void n_pop_back();
+
+    void reverseList();
+
+    Node<T>* linear_search(T value);
+
+    void bubble_sort();
+
+    int find_min();
+
+    void insert_at(int position, T value);
+
+    void swap_value(int index1, int index2);
+
+    void swap_(int index1, int index2);
+
+    int size_();
+
+    void display();
+};
+
+template<typename T>
+Node<T>* List<T>::give_me_node(int index)
+{
+    if (index == 0)
+        return head;
+
+    Node<T>* temp = head;
+
+    for (int i = 0; i < index; i++)
+        temp = temp->next;
+
+    return temp;
+}
+
+template<typename T>
+void List<T>::insert_after( Node<T>* prev_node, T new_data)
+    {
+       Node<T>* newNode = new Node<T>;
+
+       newNode->data = new_data;
+
+       newNode->next = prev_node->next;
+
+       prev_node->next = newNode;
+
+       newNode->prev = prev_node;
+
+       if (newNode->next != nullptr)
+       newNode->next->prev = newNode;
+       else tail = newNode;
+
+        count++;
+    }
+
+    template<typename T>
+    void List<T>::insert_before( Node<T>* next_node, T new_data)
+    {
+       Node<T>* newNode = new Node<T>;
+
+       newNode->data = new_data;
+
+       next_node->prev = newNode;
+
+       newNode->next = next_node;
+
+       if (newNode->prev != nullptr)
+       {
+           newNode->prev = next_node->prev->prev;
+           newNode->prev->next = newNode;
+       }
+       else head = newNode;
+
+       count++;
+    }
+
+    template<typename T>
+    void List<T>::n_remove ( Node<T>* Node_to_remove)
+    {
+        count--;
+
+        if (Node_to_remove->prev != nullptr)
+            Node_to_remove->prev->next = Node_to_remove->next;
+        else
+            {
+            head = Node_to_remove->next;
+            delete Node_to_remove;
+            return;
+            }
+
+
+        if (Node_to_remove->next != nullptr)
+            Node_to_remove->next->prev = Node_to_remove->prev;
+        else
+            tail = Node_to_remove->prev;
+
+            cout << "Node to remove: " << Node_to_remove->data << endl;
+
+             delete Node_to_remove;
+
+    }
+
+    template<typename T>
+    void List<T>::push_beginning(T new_data)
     {
        Node<T>* newNode = new Node<T>;
 
@@ -138,7 +178,8 @@ public:
 
     }
 
-    void push_end (T new_data)
+    template<typename T>
+    void List<T>::push_end (T new_data)
     {
        Node<T>* newNode = new Node<T>;
 
@@ -157,12 +198,14 @@ public:
 
     }
 
-    void remove_from_position(int position)
+    template<typename T>
+    void List<T>::remove_from_position(int position)
     {
         n_remove(give_me_node(position));
     }
 
-    void n_pop_front()
+    template<typename T>
+    void List<T>::n_pop_front()
     {
        if (head == nullptr)
             return;
@@ -191,7 +234,8 @@ public:
             }
     }
 
-    void n_pop_back()
+    template<typename T>
+     void List<T>::n_pop_back()
     {
         if (head == nullptr)
             return;
@@ -220,7 +264,8 @@ public:
         }
     }
 
-    void reverseList()
+    template<typename T>
+     void List<T>::reverseList()
     {
        Node<T> *current = head;
        Node<T> *prev = nullptr;
@@ -239,8 +284,8 @@ public:
         head = prev;
     }
 
-
-    Node<T>* linear_search(T value)
+    template<typename T>
+    Node<T>* List<T>::linear_search(T value)
     {
     if (head == nullptr)
         return nullptr;
@@ -259,7 +304,8 @@ public:
 
     }
 
-    void bubble_sort()
+template<typename T>
+void List<T>::bubble_sort()
     {
         if (head == nullptr)
             return;
@@ -280,8 +326,8 @@ public:
         } while (temp->next!=nullptr);
     }
 
-
-    int find_min()
+template<typename T>
+int List<T>::find_min()
     {
         Node<T>* ptr = head;
 
@@ -305,7 +351,9 @@ public:
 
     }
 
-    void insert_at(int position, T value)
+
+template<typename T>
+void List<T>::insert_at(int position, T value)
     {
         if (position > size_())
         {
@@ -340,7 +388,9 @@ public:
 
     }
 
-    void swap_value(int index1, int index2)
+
+template<typename T>
+void List<T>::swap_value(int index1, int index2)
     {
         int temp = 0;
 
@@ -349,7 +399,8 @@ public:
        give_me_node(index2)->data = temp;
     }
 
-    void swap_(int index1, int index2)
+template<typename T>
+void List<T>::swap_(int index1, int index2)
     {
         if (count == 0 || count ==1)
             return;
@@ -431,7 +482,8 @@ public:
 
     }
 
-    int size_()
+template<typename T>
+int List<T>::size_()
     {
         int size_ = 0;
 
@@ -451,7 +503,8 @@ public:
         return (size_+1);
     }
 
-    void display()
+template<typename T>
+void List<T>::display()
     {
         if (head == nullptr)
         {
@@ -474,4 +527,3 @@ public:
               return;
         };
     }
-};
