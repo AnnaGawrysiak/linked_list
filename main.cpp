@@ -38,7 +38,6 @@ int main()
    testowa* test = testowa::get_instance();
    test->run(); // testy maja sie same tworzyc, sprawdzac i wyczyscic. jest enkapsulacja.
 /*
-    cout << "test_push_end: " << (test->test_push_end() ? " Success! " : " Failure") << endl;
 
     myNodeVar.n_pop_front();
 

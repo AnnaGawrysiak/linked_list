@@ -236,6 +236,31 @@ bool testowa::test_remove_from_position()
 
 void testowa::testowa::run()
 {
- cout << "test_push_beginning: " << (test_push_beginning() ? " Success! " : " Failure") << endl;
+    cout << "test_push_beginning: " << (test_push_beginning() ? " Success! " : " Failure") << endl;
+
+    cout << "test_push_end: " << (test_push_end() ? " Success! " : " Failure") << endl;
+
+    cout << "test_n_pop_front: " << (test_n_pop_front() ? " Success! " : " Failure") << endl;
+
+    cout << "test_n_pop_back: " << (test_n_pop_back() ? " Success! " : " Failure") << endl;
+
+    cout << "test_reverse_list: " << (test_reverseList() ? " Success! " : " Failure") << endl;
+
+    cout << "test_linear_search: " << (test_linear_search() ? " Success! " : " Failure") << endl;
+
+    cout << "test_bubble_sort: " << (test_bubble_sort() ? " Success! " : " Failure") << endl;
+
+    cout << "test_find_min: " << (test_find_min() ? " Success! " : " Failure") << endl;
+
+    cout << "test_insert_at: " << (test_insert_at() ? " Success! " : " Failure") << endl;
+
+    cout << "test_swap_value: " << (test_swap_value() ? " Success! " : " Failure") << endl;
+
+    cout << "test_swap_: " << (test_swap_() ? " Success! " : " Failure") << endl;
+
+    cout << "test_size_: " << (test_size_() ? " Success! " : " Failure") << endl;
+
+    cout << "test_remove_from_position: " << (test_remove_from_position() ? " Success! " : " Failure") << endl;
+
 }
 
